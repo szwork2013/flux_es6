@@ -1,4 +1,6 @@
 var React = require('react');
+var HomeNewItem = require('./home/HomeNewItem.react');
+var IndexLogo = require('./index/Logo.react');
 var TodoActions = require('../actions/TodoActions');
 
 var HomeTest = React.createClass({
@@ -25,6 +27,8 @@ var HomeTest = React.createClass({
     console.log('input text\'s state.isAdded:', this.state.isAdded);
     return (
       <form>
+        <IndexLogo />
+        <HomeNewItem />
         <span>test: </span>
         <input type="text" onChange={this._onChange}/>
         <input type="button" value="submit" onClick={this._onAdd}/>

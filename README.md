@@ -3,7 +3,6 @@
 > An application architecture for React utilizing a unidirectional data flow.
 
 This is what a running Flux TodoMVC example looks like:
-<img src="screenshot.png" style="width: 100%;" />
 
 ## Learning Flux
 

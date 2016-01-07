@@ -1,7 +1,7 @@
 var React = require('react');
 var HomeNewItem = require('./home/HomeNewItem.react');
 var IndexLogo = require('./index/Logo.react');
-var TodoActions = require('../actions/TodoActions');
+var Actions = require('../actions/Actions');
 
 var HomeTest = React.createClass({
   getInitialState: function() {
@@ -11,7 +11,7 @@ var HomeTest = React.createClass({
   },
   _onAdd: function(){
     console.log('>>> event add is emitted ...');
-    TodoActions.add('test string');               
+    Actions.add('test string');               
     this.setState({
       isAdded: true
     });

@@ -1,39 +1,54 @@
-/**
- * Copyright (c) 2014, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-
 console.log(window.location.pathname);
 var React = require('react');
-var TodoApp = require('./components/TodoApp.react');
-var HomeBanner = require('./components/HomeBanner.react');
-var HomeTest = require('./components/HomeTest.react');
+var App = require('./components/App.react');
+var Products = require('./components/Products.react');
+var Cart = require('./components/Cart.react');
+var Home = require('./components/Home.react');
+var Address = require('./components/home/Address.react');
+
+// 初始化数据
+var _count = localStorage.getItem('count'); 
+var product = {
+  count: _count
+};
 
 switch (window.location.pathname) {
   case '/index.html':
     React.render(
-      <TodoApp />,
-      document.getElementById('todoapp')
+      <App />,
+      document.getElementById('J_MainApp')
     );
     break;
-  case '/home.html':
-    React.render(
-      <HomeBanner />,
-      document.getElementById('todoapp')
-    );
-    break;
-  case '/products.html':
+  case '/cart.html':
     React.render(
         <div>
-          <HomeBanner />
-          <HomeTest />
+          <Products product={product}/>
         </div>,
-      document.getElementById('todoapp')
+      document.getElementById('J_MainApp')
     );
+    break;
+  case '/order.html':
+    React.render(
+        <div>
+          <Cart />
+        </div>,
+      document.getElementById('J_MainApp')
+    );
+    break;
+  case '/home.html?address':
+    break;
+  case '/home.html':
+    if (window.location.search == '?address') {
+      React.render(
+        <Address />,
+        document.getElementById('J_MainApp')
+      );
+    } else {
+      React.render(
+        <Home />,
+        document.getElementById('J_MainApp')
+      );
+    }
     break;
   default:
 }

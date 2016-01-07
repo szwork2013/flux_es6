@@ -12,13 +12,8 @@
 var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
-  // For test
-  TODO_ADD: null,
-  TODO_CREATE: null,
-  TODO_COMPLETE: null,
-  TODO_DESTROY: null,
-  TODO_DESTROY_COMPLETED: null,
-  TODO_TOGGLE_COMPLETE_ALL: null,
-  TODO_UNDO_COMPLETE: null,
-  TODO_UPDATE_TEXT: null
+  PRODUCT_COUNTER_PLUS: null,
+  PRODUCT_COUNTER_MINUS: null,
+  SHOPPING_CART_ADD: null,
+  PAY_NOW: null
 });

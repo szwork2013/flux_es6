@@ -16,3 +16,16 @@ body {
 	-o-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 }
+
+.xui-normal-footer {
+  list-style: none;
+  float: left;
+  display: inline-flex;
+  position: fixed;
+  bottom: 0;
+}
+
+.xui-normal-footer li {
+  width: auto;
+  margin: 5px 8px 0px 0px;
+}

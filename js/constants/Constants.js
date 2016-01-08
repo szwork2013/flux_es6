@@ -14,6 +14,7 @@ var keyMirror = require('keymirror');
 module.exports = keyMirror({
   PRODUCT_COUNTER_PLUS: null,
   PRODUCT_COUNTER_MINUS: null,
+  PRODUCT_PRICE_CHANGE: null,
   SHOPPING_CART_ADD: null,
   PAY_NOW: null
 });

@@ -16,7 +16,6 @@ var CartActions = {
       productInfo: info 
     });
   }
-
 };
 
 module.exports = CartActions;

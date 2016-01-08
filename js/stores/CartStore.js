@@ -10,12 +10,12 @@ AppDispatcher.register(function(action) {
   switch(action.actionType) {
 
     case Constants.PRODUCT_COUNTER_PLUS:
-      countInc(action);
+      countInc(action.productInfo);
       CartStore.emitClick();
       break;
 
     case Constants.PRODUCT_COUNTER_MINUS:
-      countDec(action);
+      countDec(action.productInfo);
       CartStore.emitClick();
       break;
 
@@ -24,41 +24,44 @@ AppDispatcher.register(function(action) {
   }
 });
 
-var _store = {};
+var _data = [];
 
-function countInc(action) {
-  var _product = action.productInfo;
-  _store.pid = _product.pid;
+function countInc(productInfo) {
+  var _store = productInfo;
   if (!_store.productCount) {
     _store.productCount = 1;
   }
   _store.productCount = parseInt(_store.productCount) + 1;
-  productPrice(action);
+  _data[productInfo.pid] = productPrice(_store);
+  calcTotalPrice(_data);
 };
 
 function countDec(action) {
-  var _product = action.productInfo;
-  _store.pid = _product.pid;
+  var _store = productInfo;
   if (!_store.productCount) {
     _store.productCount = 1;
   }
-  _store.productCount = _store.productCount*1 - 1;
-  productPrice(action);
+  _store.productCount = parseInt(_store.productCount) - 1;
+  _data[productInfo.pid] = productPrice(_store);
+  calcTotalPrice(_data);
 };
 
-function productPrice(action) {
-  var _product = action.productInfo;
+function productPrice(productInfo) {
+  var _store = productInfo;
   if (!_store.productPrice) {
     _store.productPrice = 0;
   }
-  console.log('action %o: ',_product);
-  _store.productPrice = _product.productUnitPrice * _store.productCount;
+  _store.productPrice = _store.productUnitPrice * _store.productCount;
+  return _store;
+}
+
+function calcTotalPrice(data) {
+  console.log('calculate total price ', data);
 }
 
 var CartStore = assign({}, EventEmitter.prototype, {
-  getCartValues: function() {
-    console.log(_store);
-    return _store;
+  getCartValues: function(pid) {
+    return _data[pid];
   },
 
   emitClick: function() {
